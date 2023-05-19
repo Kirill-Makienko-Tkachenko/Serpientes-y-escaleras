@@ -24,23 +24,20 @@ class Dado{
 
 public:
     //contructor
-    Dado(const int &range, int &min) {
+    Dado(const int &size) { //Constructor por defecto
         this -> range = range;
-        int num = rand() % range + min;
     };
-    Dado(int size) {
-        int max = size, min = 1, range = max - min + 1;
-        int num = rand() % range + min;
-    };
+    Dado(int size) { this -> size = size; } //Constructor por generico
     ~Dado();
 
 
     
     
-    /*roll(){
+    const int &roll(){
         int max = size, min = 1, range = max - min + 1;
         int num = rand() % range + min;
-    }*/
+        return num;
+    }
 
 
 
