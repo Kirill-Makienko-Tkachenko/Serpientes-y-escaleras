@@ -14,7 +14,7 @@ using namespace std;
 
 class Turno: public Jugador {
 
-    int n_turno;
+    int n_turno = 1;
 
 public:
 
@@ -22,8 +22,13 @@ public:
     Turno() = default;
 
     Turno(const string &jug, const int &nJug,
-            const int &n_turno, 
-            const int &pos) : Jugador(jug, nJug, ,pos , n_turno) {} //Creo que esto esta mal
+            const int &sc, 
+            const int &pos){
+
+            Jugador(jug, nJug, pos, sc);
+            
+            
+                } //Creo que esto esta mal
 
     
 
