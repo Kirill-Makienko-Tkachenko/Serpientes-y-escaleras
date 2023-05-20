@@ -20,32 +20,20 @@ using namespace std;
 class Dado{
 
     int size = 6, max = size, min = 1, range = max - min + 1; //Cosa rara para obtener un numero en un rango deseado
-    int num = rand() % range + min;
-
+    int num;
 public:
     //contructor
-    Dado(const int &size) { //Constructor por defecto
-        this -> range = range;
-    };
-    Dado(int size) { this -> size = size; } //Constructor por generico
-    ~Dado();
+    Dado(const int &_size) : size(_size), max(_size), min(1), range(max - min + 1) {}
+    
+    ~Dado() {};
 
 
     
     
-    const int &roll(){
-        int max = size, min = 1, range = max - min + 1;
-        int num = rand() % range + min;
+    int roll() {
+        num = rand() % range + min;
         return num;
     }
-
-
-
-
-
-
-
-
 
 };
 

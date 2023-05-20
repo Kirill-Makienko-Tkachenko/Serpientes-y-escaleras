@@ -31,11 +31,12 @@ public:
         int E = 0;
         for (int i = 0; i < 29; i++){
             int v1 = rand() % 100;
-            if(0 < v1 < 30 && S <=3){ //Dependiendo de una probabilidad del 30% agrega una S al tablero, hasta una cantidad de 3
+            //cout << v1 << endl;
+            if(v1 > 0 && v1 < 20 && S <3){ //Dependiendo de una probabilidad del 30% agrega una S al tablero, hasta una cantidad de 3
                 tablero.push_back("S");
                 S++;
             }
-            else if(31 < v1 < 60 && E <=3){ //Misma situacion que la S, pero con E
+            else if(v1 > 21 && v1 < 40 && E <3){ //Misma situacion que la S, pero con E
                 tablero.push_back("E");
                 E++;
             }
@@ -49,6 +50,7 @@ public:
 //Definir getter
 
 const vector<string> &getTablero() { return tablero; }
+const string& getCelda(int pos) { return tablero[pos]; }
 
 //No hay setter porque no hay valores que podamos definir
 
