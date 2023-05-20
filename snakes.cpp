@@ -65,32 +65,42 @@ public:
 
         for(int i = 1; i<30; i++){
             int turno = i;
-            if (i%2 == 0){
-                
-                    cout << "Press C to continue next turn, or E to end the game:" << "\n";
-                    cin >> option;
-                    if (option == "E" || option == "e") {
-                        cout << "Ok, exiting game" << endl;
-                        return;
+            cout << "Press C to continue next turn, or E to end the game:" << "\n";
+            cin >> option;
+                if (option == "E" || option == "e") {
+                    cout << "Ok, exiting game" << endl;
+                    return;
                     }   
-                    value = teclaPresionada(option);
+            value = teclaPresionada(option);
+            if (value){
+            if (i%2 != 0){
+                
+                    
 
                     if (value){
                         posicion_n = 0;
-                        cout << "Options for player 1: \n";
-                        cout << "Turn " << "Player " << "Position " << "Dice Value " << "Target cell " << "Final position " << "\n";
+                        
                         val_dado = dado.roll();
                         posicion = J1.getPosicion() + val_dado;
+                        cout << "Stats for player 1: \n";
+                        cout << "Turn " << "Player " << "Position " << "Dice Value " << "Target cell " << "Final position " << "\n";
+                        if(posicion>= 30){
+                            cout << "Player 1 Wins" << "\n";
+                            cout << "-- GAME OVER --" << "\n";
+                            return;
+                        }
                         if(T1.getCelda(posicion) == "S") { posicion_n = posicion - 3; }
                         else if(T1.getCelda(posicion) == "E") { posicion_n = posicion + 3; }
                         else {posicion_n = posicion;}
-                        cout << turno << " " << J1.getJugador() << " " << J1.getPosicion() << " " << val_dado << " " << T1.getCelda(posicion) << " " << posicion_n << "\n";
+                        cout << turno << " " << J1.getJugador() << " " << J1.getPosicion() << " " << val_dado << " " << T1.getCelda(posicion) << " " << posicion_n << "\n\n\n\n\n\n\n\n";
+                        
                         J1.setPosicion(posicion_n);
                         turno++;
                     }
                     
                     else {
                         cout << "Invalid option, please press C to continue next turn or E to end the game" << "\n";
+                        i = i -1;
                         while (!value)
                         {
                             cout << "Press C to continue next turn, or E to end the game:" << "\n";
@@ -103,50 +113,45 @@ public:
                         }
                         
                     }
+
                 
             }
-            if (i%2 != 0){
+            if (i%2 == 0){
                 
-                    cout << "Press C to continue next turn, or E to end the game:" << "\n";
-                    cin >> option;
-                    if (option == "E" || option == "e") {
-                        cout << "Ok, exiting game" << endl;
-                        return;
-                    }   
-                    value = teclaPresionada(option);
+                    
 
                     if (value){
                         posicion_n = 0;
-                        cout << "Options for player 2: \n";
-                        cout << "Turn " << "Player " << "Position " << "Dice Value " << "Target cell " << "Final position " << "\n";
                         val_dado = dado.roll();
                         posicion = J2.getPosicion() + val_dado;
+                        if(posicion >= 30){
+                            cout << "Player 2 Wins" << "\n";
+                            cout << "-- GAME OVER --" << "\n";
+                            return;
+                        }
+                        cout << "Options for player 2: \n";
+                        cout << "Turn " << "Player " << "Position " << "Dice Value " << "Target cell " << "Final position " << "\n";
                         if(T1.getCelda(posicion) == "S") { posicion_n = posicion - 3; }
                         else if(T1.getCelda(posicion) == "E") { posicion_n = posicion + 3; }
                         else {posicion_n = posicion;}
-                        cout << turno << " " << J2.getJugador() << " " << J2.getPosicion() << " " << val_dado << " " << T1.getCelda(posicion) << " " << posicion_n << "\n";
+                        cout << turno << " " << J2.getJugador() << " " << J2.getPosicion() << " " << val_dado << " " << T1.getCelda(posicion) << " " << posicion_n << "\n\n\n\n\n\n\n\n";
+                        
                         J2.setPosicion(posicion_n);
                         turno++;
                     }
-                    
-                    else {
+            }
+            }
+            else {
                         cout << "Invalid option, please press C to continue next turn or E to end the game" << "\n";
-                        while (!value)
-                        {
-                            cout << "Press C to continue next turn, or E to end the game:" << "\n";
-                            cin >> option;
-                            if (option == "E" || option == "e") {
-                            cout << "Ok, exiting game" << endl;
-                            return;
-                            }   
-                            value = teclaPresionada(option);
-                        }
-                        
+                        i--;
                     }
-                
+            if(i == 29){
+                cout << "The maximum number of turn has been reached..." << "\n";
+                cout << "Ending game now" << "\n"; 
             }
         }
-    }   
+    } 
+     
 };
 
 
